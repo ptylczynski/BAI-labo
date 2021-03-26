@@ -14,7 +14,7 @@ public class ItemService {
         return this.itemRepository.save(item);
     }
 
-    public ItemDAO createIfNotExists(ItemDAO itemDAO){
+    public ItemDAO createIfNotExist(ItemDAO itemDAO){
         if(this.itemRepository.existsById(itemDAO.getId()))
             return itemDAO;
         else
