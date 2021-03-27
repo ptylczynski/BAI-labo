@@ -25,8 +25,8 @@ public class ItemService {
         return this.itemRepository.save(item);
     }
 
-    public void deleteOne(ItemDAO item){
-        this.itemRepository.delete(item);
+    public void deleteOne(Long item){
+        this.itemRepository.deleteById(item);
     }
 
     public ItemDAO findOne(Long id) throws Exception {

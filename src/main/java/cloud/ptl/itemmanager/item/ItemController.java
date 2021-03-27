@@ -1,44 +1,44 @@
-package cloud.ptl.itemmanager.person;
+package cloud.ptl.itemmanager.item;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/person")
-public class PersonController {
+@RequestMapping("/item")
+public class ItemController {
     @Autowired
-    private PersonService personService;
+    private ItemService itemService;
 
     @Autowired
-    private PersonModelASM personModelASM;
+    private ItemModelASM itemModelASM;
 
     @GetMapping("/{id}")
-    public PersonModel findOne(
+    public ItemModel findOne(
             @PathVariable("id") Long id
     ) throws Exception {
-        return this.personModelASM.assemble(
-                this.personService.findOne(id)
+        return this.itemModelASM.assemble(
+                this.itemService.findOne(id)
         );
     }
 
     @PostMapping("")
-    public PersonModel postOne(
-            PersonDAO personDAO,
+    public ItemModel postOne(
+            ItemDAO itemDAO,
             BindingResult bindingResult
     ) throws Exception {
         if(!bindingResult.hasErrors())
-            return this.personModelASM.assemble(
-                    this.personService.createIfNotExist(personDAO)
+            return this.itemModelASM.assemble(
+                    this.itemService.createIfNotExist(itemDAO)
             );
         else
-            throw new Exception("Error in Person Object");
+            throw new Exception("Error in Item Object");
     }
 
     @DeleteMapping("/{id}")
     public void deleteOne(
             @PathVariable("id") Long id
     ){
-        this.personService.deleteOne(id);
+        this.itemService.deleteOne(id);
     }
 }

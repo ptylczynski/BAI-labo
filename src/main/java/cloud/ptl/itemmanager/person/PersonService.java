@@ -25,8 +25,8 @@ public class PersonService {
         return this.personRepository.save(personDAO);
     }
 
-    public void deleteOne(PersonDAO personDAO){
-        this.personRepository.delete(personDAO);
+    public void deleteOne(Long personDAO){
+        this.personRepository.deleteById(personDAO);
     }
 
     public PersonDAO findOne(Long id) throws Exception {
